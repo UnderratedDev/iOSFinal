@@ -49,7 +49,13 @@ class ViewController: UIViewController {
         let openAction = UIAlertAction(title: "Open", style: UIAlertActionStyle.default) {
             (result : UIAlertAction) -> Void in
             print("Open")
-            //
+            var instagramHooks = "apptwo://"
+            var instagramUrl = URL(string: instagramHooks)
+            if UIApplication.shared.canOpenURL(instagramUrl!)
+            {
+                UIApplication.shared.openURL(instagramUrl!)
+                
+            }
         }
         
         alertController.addAction(cancelAction)
