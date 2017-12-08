@@ -10,14 +10,24 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var appDelegate = UIApplication.shared.delegate as! AppDelegate
+    @IBOutlet weak var message: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        if appDelegate.query != nil {
+            print (appDelegate.query)
+            message.font = UIFont(name: "Optima-BoldItalic", size: 40.0)
+            message.text = appDelegate.query
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 
