@@ -49,7 +49,8 @@ class ViewController: UIViewController {
         let openAction = UIAlertAction(title: "Open", style: UIAlertActionStyle.default) {
             (result : UIAlertAction) -> Void in
             print("Open")
-            let urlStr = "apptwo://?" + tMessage!
+
+            let urlStr = "apptwo://?" + (tMessage?.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed))!
             let url = URL(string: urlStr)
             if UIApplication.shared.canOpenURL(url!)
             {

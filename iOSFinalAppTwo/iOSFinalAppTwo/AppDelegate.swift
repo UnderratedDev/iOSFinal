@@ -49,6 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         scheme = url.scheme
         path = url.path
         query = url.query
+        query = query.removingPercentEncoding
         
         print (scheme)
         print (path)
