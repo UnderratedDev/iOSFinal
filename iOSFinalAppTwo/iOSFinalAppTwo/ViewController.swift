@@ -13,8 +13,24 @@ class ViewController: UIViewController {
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet weak var message: UILabel!
     
+    @objc func viewDidBecomeActive(){
+        print("viewDidBecomeActive")
+        if appDelegate.query != nil {
+            print (appDelegate.query)
+            message.font = UIFont(name: "Optima-BoldItalic", size: 20.0)
+            message.text = appDelegate.query
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if appDelegate.query != nil {
+            print (appDelegate.query)
+            message.font = UIFont(name: "Optima-BoldItalic", size: 20.0)
+            message.text = appDelegate.query
+        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(viewDidBecomeActive), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -25,9 +41,14 @@ class ViewController: UIViewController {
             message.text = appDelegate.query
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        if appDelegate.query != nil {
+            print (appDelegate.query)
+            message.font = UIFont(name: "Optima-BoldItalic", size: 20.0)
+            message.text = appDelegate.query
+        }
     }
 
 
