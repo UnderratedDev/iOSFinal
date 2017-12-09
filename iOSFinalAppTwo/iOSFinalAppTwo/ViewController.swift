@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         super.viewDidAppear(true)
         if appDelegate.query != nil {
             print (appDelegate.query)
-            message.font = UIFont(name: "Optima-BoldItalic", size: 40.0)
+            message.font = UIFont(name: "Optima-BoldItalic", size: 20.0)
             message.text = appDelegate.query
         }
     }
